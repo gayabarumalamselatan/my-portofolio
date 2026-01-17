@@ -1,57 +1,73 @@
-"use client"
-import { useEffect, useState, useRef } from "react"
-import Navbar from "@/components/navbar"
-import BlurText from "@/components/reactBits/BlurText"
-import SplitText from "@/components/reactBits/SplitText"
-import { FaAnglesDown } from "react-icons/fa6"
+"use client";
+import { useEffect, useState, useRef } from "react";
+import Navbar from "@/components/navbar";
+import BlurText from "@/components/reactBits/BlurText";
+import { FaAnglesDown } from "react-icons/fa6";
 
-import Experience from "@/sections/experience/experience"
-import Works from "@/sections/works/works"
-// import Lanyard from '@/components/reactBits/Lanyard';
-
+import Experience from "@/sections/experience/experience";
+import Works from "@/sections/works/works";
+import Contact from "@/sections/contact-me/Contact";
+import Footer from "@/sections/footer/Footer";
+import Loading from "@/components/Loading";
+import About from "@/sections/about-me/About";
 
 export default function Home() {
-  const [isFloating, setIsFloating] = useState(false)
-  const [animationKey, setAnimationKey] = useState(0)
-  const sectionRef = useRef<HTMLElement>(null)
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFloating, setIsFloating] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY
-      const triggerHeight = window.innerHeight * 0.9
-      setIsFloating(scrollY > triggerHeight)
+      const scrollY = window.scrollY;
+      const triggerHeight = window.innerHeight * 0.9;
+      setIsFloating(scrollY > triggerHeight);
+    };
+
+    if (!isLoading) {
+      handleScroll();
+      window.addEventListener("scroll", handleScroll);
     }
 
-    handleScroll()
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isLoading]);
 
   useEffect(() => {
-    if (!sectionRef.current) return
+    if (!sectionRef.current || isLoading) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setAnimationKey((prev) => prev + 1)
+            setAnimationKey((prev) => prev + 1);
           }
-        })
+        });
       },
       { threshold: 0.6 },
-    )
+    );
 
-    observer.observe(sectionRef.current)
+    observer.observe(sectionRef.current);
 
     return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current)
-    }
-  }, [])
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, [isLoading]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="min-h-screen">
-      {/* nav */}
+      {/* Navigation */}
       <nav
         className={`${
           isFloating
@@ -62,8 +78,11 @@ export default function Home() {
         <Navbar />
       </nav>
 
-      {/* Home */}
-      <section id="home" ref={sectionRef} className="decorative-section min-h-screen pt-8 relative">
+      <section
+        id="home"
+        ref={sectionRef}
+        className="decorative-section min-h-screen pt-8 relative"
+      >
         <div className="ellipse ellipse-blue-bottom" />
         <div className="ellipse ellipse-green-bottom" />
         <div className="ellipse ellipse-green-top" />
@@ -78,7 +97,9 @@ export default function Home() {
             direction="top"
             className="text-7xl font-bold text-sky-900"
           />
-          <p className="text-center mt-5 text-lg text-sky-900">Web Designer | Fullstack Developer</p>
+          <p className="text-center mt-5 text-lg text-sky-900">
+            Web Designer | Fullstack Developer
+          </p>
 
           <a href="#about-me" className="mt-15 flex justify-center">
             <FaAnglesDown className="h-10 w-10 text-sky-900 animate-bounce hover:bg-green-100 rounded-full p-2" />
@@ -86,49 +107,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Me */}
-      <section id="about-me" className="min-h-screen bg-white p-20 pt-44">
-        <div className="flex justify-center mt-5 mb-20">
-          <SplitText
-            text="Wanna Know About Me?"
-            className="text-5xl font-bold text-sky-900 flex justify-center"
-            delay={50}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-          />
-        </div>
-        <div className="grid grid-cols-12 gap-6 items-center">
-          <div className="col-span-6">
-            <div className="">{/* <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} /> */}</div>
-          </div>
-
-          <div className="col-span-6">
-            <p className="text-lg leading-relaxed text-gray-800">
-              Hello! I&apos;m Febri, a passionate web designer and fullstack developer with over 5 years of experience
-              creating digital experiences that matter. I specialize in building modern, responsive websites and web
-              applications that not only look great but also deliver exceptional user experiences.
-            </p>
-            <br />
-            <p>
-              My expertise spans across frontend technologies like React, Next.js, and Vue.js, as well as backend
-              development with Node.js, Python, and various databases. I believe in writing clean, maintainable code and
-              staying up-to-date with the latest industry trends and best practices.
-            </p>
-          </div>
-        </div>
-      </section>
+      <About />
 
       {/* Experience */}
-      <Experience/>
+      <Experience />
 
       {/* My Work */}
-      <Works/>
+      <Works />
+
+      <Contact />
+
+      <Footer />
     </div>
-  )
+  );
 }

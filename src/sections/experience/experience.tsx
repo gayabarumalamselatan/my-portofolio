@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
-import GooeyNav from "@/components/reactBits/GooeyNav"
-import SplitText from "@/components/reactBits/SplitText"
-import { educationData, experienceNavItems, workExperienceData } from '@/constant/workExperience'
+import React, { useState } from "react";
+import GooeyNav from "@/components/reactBits/GooeyNav";
+import SplitText from "@/components/reactBits/SplitText";
+import {
+  educationData,
+  experienceNavItems,
+  workExperienceData,
+} from "@/constant/workExperience";
 
 const Experience = () => {
-  const [activeTab, setActiveTab] = useState("education")
-  const [selectedEducation, setSelectedEducation] = useState<number | null>(1)
-  const [selectedWork, setSelectedWork] = useState<number | null>(1)
+  const [activeTab, setActiveTab] = useState("education");
+  const [selectedEducation, setSelectedEducation] = useState<number | null>(1);
+  const [selectedWork, setSelectedWork] = useState<number | null>(1);
 
   // const handleTabChange = (index: number) => {
   //   setActiveTab(index)
@@ -15,11 +19,14 @@ const Experience = () => {
   //   console.log(index);
   // }
 
-  console.log(selectedEducation)
-  console.log(activeTab)
+  console.log(selectedEducation);
+  console.log(activeTab);
 
   return (
-    <section id="experience" className="min-h-screen bg-sky-900 p-20 pt-35 pb-30">
+    <section
+      id="experience"
+      className="min-h-screen bg-sky-900 p-20 pt-35 pb-30"
+    >
       <div className="flex justify-center mt-5 mb-7">
         <SplitText
           text="My Experience"
@@ -53,11 +60,12 @@ const Experience = () => {
         {activeTab === "education" ? (
           // Education Tab
           <>
-            <h3 className="text-2xl font-bold text-sky-50 mb-6">Education History</h3>
+            <h3 className="text-2xl font-bold text-sky-50 mb-6">
+              Education History
+            </h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Education List */}
               <div className="space-y-4">
-                
                 {educationData.map((edu) => (
                   <div
                     key={edu.id}
@@ -68,7 +76,9 @@ const Experience = () => {
                         : "bg-sky-800 text-sky-50 hover:bg-sky-700"
                     }`}
                   >
-                    <h4 className="text-xl font-semibold mb-2">{edu.institution}</h4>
+                    <h4 className="text-xl font-semibold mb-2">
+                      {edu.institution}
+                    </h4>
                     <p className="text-lg mb-1">{edu.major}</p>
                     <p className="text-sm opacity-80">{edu.yearRange}</p>
                   </div>
@@ -79,24 +89,35 @@ const Experience = () => {
               <div className="bg-sky-50 rounded-4xl p-8">
                 {selectedEducation ? (
                   (() => {
-                    const edu = educationData.find((e) => e.id === selectedEducation)
+                    const edu = educationData.find(
+                      (e) => e.id === selectedEducation
+                    );
                     return edu ? (
                       <div>
-                        <h3 className="text-2xl font-bold text-sky-900 mb-4">{edu.institution}</h3>
+                        <h3 className="text-2xl font-bold text-sky-900 mb-4">
+                          {edu.institution}
+                        </h3>
                         <div className="space-y-3 mb-6">
                           <p>
-                            <span className="font-semibold">Major:</span> {edu.major}
+                            <span className="font-semibold">Major:</span>{" "}
+                            {edu.major}
                           </p>
                           <p>
-                            <span className="font-semibold">Years:</span> {edu.yearRange}
+                            <span className="font-semibold">Years:</span>{" "}
+                            {edu.yearRange}
                           </p>
                           <p>
-                            <span className="font-semibold">Location:</span> {edu.city}, {edu.country}
+                            <span className="font-semibold">Location:</span>{" "}
+                            {edu.city}, {edu.country}
                           </p>
                         </div>
-                        <p className="text-gray-700 mb-6 leading-relaxed">{edu.description}</p>
+                        <p className="text-gray-700 mb-6 leading-relaxed">
+                          {edu.description}
+                        </p>
                         <div>
-                          <h4 className="font-semibold text-sky-900 mb-3">Skills Acquired:</h4>
+                          <h4 className="font-semibold text-sky-900 mb-3">
+                            Skills Acquired:
+                          </h4>
                           <div className="flex flex-wrap gap-2">
                             {edu.skills.map((skill, index) => (
                               <span
@@ -109,11 +130,13 @@ const Experience = () => {
                           </div>
                         </div>
                       </div>
-                    ) : null
+                    ) : null;
                   })()
                 ) : (
                   <div className="text-center text-gray-500 py-20">
-                    <p className="text-lg">Select an education item to view details</p>
+                    <p className="text-lg">
+                      Select an education item to view details
+                    </p>
                   </div>
                 )}
               </div>
@@ -122,7 +145,9 @@ const Experience = () => {
         ) : (
           // Work Experience Tab
           <>
-            <h3 className="text-2xl font-bold text-sky-50 mb-6">Work Experience</h3>
+            <h3 className="text-2xl font-bold text-sky-50 mb-6">
+              Work Experience
+            </h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Work Experience List */}
               <div className="space-y-4">
@@ -136,7 +161,9 @@ const Experience = () => {
                         : "bg-sky-800 text-sky-50 hover:bg-sky-700"
                     }`}
                   >
-                    <h4 className="text-xl font-semibold mb-2">{work.company}</h4>
+                    <h4 className="text-xl font-semibold mb-2">
+                      {work.company}
+                    </h4>
                     <p className="text-lg mb-1">{work.position}</p>
                     <p className="text-sm opacity-80">{work.yearRange}</p>
                   </div>
@@ -147,36 +174,52 @@ const Experience = () => {
               <div className="bg-sky-50 rounded-4xl p-8">
                 {selectedWork ? (
                   (() => {
-                    const work = workExperienceData.find((w) => w.id === selectedWork)
+                    const work = workExperienceData.find(
+                      (w) => w.id === selectedWork
+                    );
                     return work ? (
                       <div>
-                        <h3 className="text-2xl font-bold text-sky-900 mb-4">{work.company}</h3>
+                        <h3 className="text-2xl font-bold text-sky-900 mb-4">
+                          {work.company}
+                        </h3>
                         <div className="space-y-3 mb-6">
                           <p>
-                            <span className="font-semibold">Position:</span> {work.position}
+                            <span className="font-semibold">Position:</span>{" "}
+                            {work.position}
                           </p>
                           <p>
-                            <span className="font-semibold">Duration:</span> {work.yearRange}
+                            <span className="font-semibold">Duration:</span>{" "}
+                            {work.yearRange}
                           </p>
                         </div>
-                        <p className="text-gray-700 mb-6 leading-relaxed">{work.description}</p>
+                        <p className="text-gray-700 mb-6 leading-relaxed">
+                          {work.description}
+                        </p>
                         <div>
-                          <h4 className="font-semibold text-sky-900 mb-3">Key Responsibilities:</h4>
+                          <h4 className="font-semibold text-sky-900 mb-3">
+                            Key Responsibilities:
+                          </h4>
                           <ul className="space-y-2">
-                            {work.responsibilities.map((responsibility, index) => (
-                              <li key={index} className="flex items-start">
-                                <span className="w-2 h-2 bg-sky-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                                <span className="text-gray-700">{responsibility}</span>
-                              </li>
-                            ))}
+                            {work.responsibilities.map(
+                              (responsibility, index) => (
+                                <li key={index} className="flex items-start">
+                                  <span className="w-2 h-2 bg-sky-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                  <span className="text-gray-700">
+                                    {responsibility}
+                                  </span>
+                                </li>
+                              )
+                            )}
                           </ul>
                         </div>
                       </div>
-                    ) : null
+                    ) : null;
                   })()
                 ) : (
                   <div className="text-center text-gray-500 py-20">
-                    <p className="text-lg">Select a work experience to view details</p>
+                    <p className="text-lg">
+                      Select a work experience to view details
+                    </p>
                   </div>
                 )}
               </div>
@@ -185,7 +228,7 @@ const Experience = () => {
         )}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Experience
+export default Experience;

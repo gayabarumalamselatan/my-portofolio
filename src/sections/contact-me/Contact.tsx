@@ -99,7 +99,7 @@ const Contact = () => {
               </h2>
               <div className="flex space-x-6 justify-center">
                 <a
-                  href="https://linkedin.com/in/febri"
+                  href="https://linkedin.com/in/febrian-hartono-99b721289"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-sky-100 p-4 rounded-full hover:bg-sky-200 hover:animate-pulse transition-colors group"
@@ -107,7 +107,7 @@ const Contact = () => {
                   <FaLinkedin className="h-7 w-7 text-sky-700 group-hover:text-sky-900" />
                 </a>
                 <a
-                  href="https://github.com/febri"
+                  href="https://github.com/gayabarumalamselatan"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-sky-100 p-4 rounded-full hover:bg-sky-200 hover:animate-pulse transition-colors group"
@@ -115,7 +115,7 @@ const Contact = () => {
                   <FaGithub className="h-7 w-7 text-sky-700 group-hover:text-sky-900" />
                 </a>
                 <a
-                  href="https://instagram.com/febri"
+                  href="https://instagram.com/febriansurya22"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-sky-100 p-4 rounded-full hover:bg-sky-200 hover:animate-pulse transition-colors group"

@@ -29,7 +29,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="relative">
             <div className="relative h-[400px] md:h-[500px] lg:h-[550px] rounded-3xl overflow-hidden shadow-2xl">
-              <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+              <Lanyard position={[0, 0, 6]} gravity={[0, -40, 0]} />
             </div>
             <div className="absolute -top-6 -right-6 w-12 h-12 bg-green-300 rounded-full opacity-20" />
             <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-sky-300 rounded-full opacity-20" />

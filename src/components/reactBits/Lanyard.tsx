@@ -290,9 +290,9 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
         </RigidBody>
       </group>
       <mesh ref={band}>
-        {/* @ts-expect-error */}
+        {/* @ts-expect-error - meshLineGeometry is a custom THREE.js extension not in default types */}
         <meshLineGeometry />
-        {/* @ts-expect-error */}
+        {/* @ts-expect-error - meshLineGeometry is a custom THREE.js extension not in default types */}
         <meshLineMaterial
           color="white"
           depthTest={false}

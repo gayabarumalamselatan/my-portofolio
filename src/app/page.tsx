@@ -54,10 +54,12 @@ export default function Home() {
       { threshold: 0.6 },
     );
 
-    observer.observe(sectionRef.current);
+    const element = sectionRef.current;
+
+    observer.observe(element);
 
     return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      if (element) observer.unobserve(element);
     };
   }, [isLoading]);
 

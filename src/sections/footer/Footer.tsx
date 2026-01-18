@@ -10,28 +10,15 @@ import {
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [isAtHome, setIsAtHome] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Cek jika scroll position > 500px, tampilkan tombol
-      const scrolled = window.scrollY > 500;
-      setShowBackToTop(scrolled);
-
-      // Cek jika berada di section home
-      const homeSection = document.getElementById("home");
-      if (homeSection) {
-        const rect = homeSection.getBoundingClientRect();
-        // Jika home section masih terlihat di viewport
-        const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;
-        setIsAtHome(isInViewport);
-      }
+      setShowBackToTop(window.scrollY > 500);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -43,9 +30,7 @@ const Footer = () => {
   return (
     <footer className="bg-sky-900 text-white pt-12 pb-8">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          {/* Brand/About */}
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-white">
               FSH<span className="text-secondary">.</span>
@@ -56,28 +41,28 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/febri"
+                href="https://github.com/gayabarumalamselatan"
                 className="text-sky-300 hover:text-white transition-colors"
                 aria-label="GitHub"
               >
                 <FaGithub className="h-5 w-5" />
               </a>
               <a
-                href="https://linkedin.com/in/febri"
+                href="https://linkedin.com/in/febrian-hartono-99b721289"
                 className="text-sky-300 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com/febri"
+                href="https://instagram.com/febriansurya22"
                 className="text-sky-300 hover:text-white transition-colors"
                 aria-label="Instagram"
               >
                 <FaInstagram className="h-5 w-5" />
               </a>
               <a
-                href="mailto:febri@example.com"
+                href="mailto:soerjahartono22@gmail.com"
                 className="text-sky-300 hover:text-white transition-colors"
                 aria-label="Email"
               >

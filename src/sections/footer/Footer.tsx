@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  FaHeart,
-  FaCode,
-  FaCoffee,
   FaGithub,
   FaLinkedin,
   FaInstagram,

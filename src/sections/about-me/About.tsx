@@ -41,7 +41,9 @@ const About = () => {
                 <div>
                   <h2 className="flex text-3xl text-sky-900">
                     HEY!&nbsp;
-                    <p className="font-semibold text-sky-900">I'm Febri,</p>
+                    <p className="font-semibold text-sky-900">
+                      I&apos;m Febri,
+                    </p>
                     &nbsp;A
                   </h2>
                   <h2 className="text-3xl text-sky-900 font-semibold flex">
